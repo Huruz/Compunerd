@@ -1,0 +1,17 @@
+commit b2e05d2fc4eec5634b9f13b0183cf9ba4d67799a
+Author: Huruz <huruz_wwe@hotmail.com>
+Date:   Thu Aug 8 23:19:49 2019 -0500
+
+    Txt cambio
+
+commit 979b4493b88f991708c52f5e73f06c2815835cb4
+Author: Huruz <huruz_wwe@hotmail.com>
+Date:   Thu Aug 8 23:17:48 2019 -0500
+
+    iniciamos
+
+commit 772d77a5cbb453764c7a448e3e6b1f70a2995657
+Author: Huruz <huruz_wwe@hotmail.com>
+Date:   Thu Aug 8 23:02:28 2019 -0500
+
+    Primer commit
