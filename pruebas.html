@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+        width: 150px;
+        padding: 0 16px;
+        background-color: gray;
+      }
+      button {
+        height: 30px;
+        width: 60%;
+        outline: none;
+        margin: 8px 24px;
+      }
+      #filterW{
+        width: 100%;
+      }
+    </style>
+    <script>
+        window.onload = function(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                var noticias = JSON.parse(this.responseText);                
+                var divNoticias = document.getElementById("noticias");
+                divNoticias.innerHTML="";                
+                for(let x=0; x<noticias.length; x++) {
+                    //document.getElementById("noticias").append('<article>'+noticias[x]+'</article>');
+                    var aTitulo = document.createElement("a");
+                    var pFecha = document.createElement("p");
+                    var pDesc = document.createElement("p");
+                    var pAutor = document.createElement("p");
+
+                    aTitulo.innerHTML= noticias[x].titulo;
+                    aTitulo.setAttribute("href",noticias[x].link);
+                    aTitulo.setAttribute("target","_blank");
+                    pFecha.innerHTML= noticias[x].fecha;
+                    pDesc.innerHTML= noticias[x].descripcion;
+                    pAutor.innerHTML= noticias[x].autor;
+
+                    divNoticias.appendChild(aTitulo);
+                    divNoticias.appendChild(pFecha);
+                    divNoticias.appendChild(pDesc);
+                    divNoticias.appendChild(pAutor);
+                }
+                }
+            };
+            xmlhttp.open("GET", "http://localhost/web/viewAllRSS.php", true);
+            xmlhttp.send();
+
+            let buscar = document.getElementById('buscar');
+        let actualizar = document.getElementById('actualizar');
+
+        buscar.onclick = function(){
+            var filterW = "word=" + document.getElementById("filterW").value;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var divNoticias = document.getElementById("noticias");
+                    if(this.responseText!='Sin coincidencias'){
+                        var noticias = JSON.parse(this.responseText);
+                        divNoticias.innerHTML="";
+                                    
+                        for(let x=0; x<noticias.length; x++) {
+                            //document.getElementById("noticias").append('<article>'+noticias[x]+'</article>');
+                            var aTitulo = document.createElement("a");
+                            var pFecha = document.createElement("p");
+                            var pDesc = document.createElement("p");
+                            var pAutor = document.createElement("p");
+
+                            aTitulo.innerHTML= noticias[x].titulo;
+                            aTitulo.setAttribute("href",noticias[x].link);
+                            aTitulo.setAttribute("target","_blank");
+                            pFecha.innerHTML= noticias[x].fecha;
+                            pDesc.innerHTML= noticias[x].descripcion;
+                            pAutor.innerHTML= noticias[x].autor;
+
+                            divNoticias.appendChild(aTitulo);
+                            divNoticias.appendChild(pFecha);
+                            divNoticias.appendChild(pDesc);
+                            divNoticias.appendChild(pAutor);
+                        }
+                    }
+                    else{
+                        divNoticias.innerHTML ="Sin coincidencias";
+                    }
+                }
+            };
+            xmlhttp.open("POST", "http://localhost/web/actualizarRSS.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(filterW);
+        };
+
+        actualizar.onclick = function(){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("noticias").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "http://localhost/web/noticiasRSS.php", true);
+        xmlhttp.send();
+        };
+
+        };
+    </script>
+  </head>
+  <body>
+    <h2>RSS de NYT</h2>
+    <button type="button" id="actualizar">Actualizar</button>
+    <form>
+        <input type="search" id="filterW">
+        <button type="button" id="buscar">Buscar</button>
+    </form>
+    <div id="noticias"></div>
+  </body>
+</html>
