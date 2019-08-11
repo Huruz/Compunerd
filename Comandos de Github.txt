@@ -1,0 +1,20 @@
+git init - Iniciar un proyecto
+git add . - Agregar todos los cambios
+git commit -m "Mensaje" - Hacer commit a los cambios
+git remote add origin *url* - Sincronizar el repositorio local con el remoto
+git branch - Ver las ramas disponibles
+git branch *Nombre* - Crear una nueva rama bajo el nombre dado a partir del último cambio de la rama principal
+git checkout *Branch* - Cambiar hacia la rama deseada
+git checkout *Sha* - Cambiar hacia al commit deseado
+git checkout -b *Nombre* - Crear y cambiar hacia la nueva rama
+git branch -d *Branch* - Borrar una rama
+git log- Ver los commits realizados
+git log > "*nombre*.txt" - Escribir todos los commits en un txt
+git status - Ver los pendientes en el repo
+git push origin master - Sube los cambios al Repo Remoto (origin) de la rama deseada (master)
+git tag -a v*.* -m "Mensaje" - Agregar una etiqueta hasta el último commit, si se le agrega el código Sha al Final, se le coloca la etiqueta al commit deseado
+git push origin --tags - Sube todos los Tags
+git merge *branch* - Hace la combinación de la rama escrita en la rama en las cual estamos actualmente
+git reset --soft - elimina los commits y no toca los docs
+git fetch origin - Baja los cambios del remoto a la rama oculta
+git merge origin origin/master - Combina los cambios del anterior en nuestra rama master
