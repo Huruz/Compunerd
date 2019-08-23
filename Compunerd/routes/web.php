@@ -16,8 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/holamundo', function(){
-    return 'Hola Compunerd';
+Route::get('/home', function(){
+    return view('home');
 });
 
 Route::get('/numeroIn/{num}', function($num){ //Ojo se puede poner el parámetro seguido de la URL
@@ -29,6 +29,8 @@ Route::get('/posts/{post_id}/comments/{comments_id}', function($postId,$commentI
 });
 
 Route::get('/saludo/{name}/{nickname?}', function($name, $nickname = null){
+    $name = ucfirst($name);
+
     if($nickname){
         return 'Hola '.$name.', tu apodo es '.$nickname;
     }
