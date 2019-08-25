@@ -9,23 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="@yield('pathCssPage')">
 </head>
 <body class="d-flex flex-column h-100">
     <!--Header-->
@@ -39,7 +23,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                     </li>
@@ -77,14 +61,14 @@
 
 
     <!--Footer-->
-    <footer class="footer mt-auto py-3">
+    <footer class="footer mt-auto py-3 text-white">
         <div class="container-fluid">
             <div class="row justify-content-between">
                 <div class="col-xl-2">
-                    <a class="nav-link" href="#">Inicio</a>
-                    <a class="nav-link" href="#">Productos</a>
-                    <a class="nav-link" href="#">Servicios</a>
-                    <a class="nav-link" href="#">Nosotros</a>
+                    <p><a class="text-white" href="#">Inicio</a></p>
+                    <p><a class="text-white" href="#">Productos</a></p>
+                    <p><a class="text-white" href="#">Servicios</a></p>
+                    <p><a class="text-white" href="#">Nosotros</a></p>
                 </div>
                 <div class="col-xl-3">
                     <h3>Información</h3>
@@ -96,17 +80,19 @@
                         Sábado: 9am - 2pm
                     </p>
                 </div>
-                <div class="col-xl-3 bg-dark text-white">
-                    Mapa
+                <div class="col-xl-3">
+                    <iframe class="map-responsive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.3253934723734!2d-89.65219124691369!3d20.99329272724302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567389172b02fd%3A0x21ae26e94481c63b!2sCompunerd!5e0!3m2!1ses!2sus!4v1566688436744!5m2!1ses!2sus" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                 </div>
                 <div class="col-xl-2">
-                    <h3>Síguenos</h3>
-                    <i class="fab fa-facebook fa-2x"></i>
-                    <i class="fab fa-instagram fa-2x"></i>
+                    <h3 class="mb-xl-2">Síguenos</h3>
+                    <i class="fab fa-facebook fa-2x mx-xl-2"></i>
+                    <i class="fab fa-instagram fa-2x mx-xl-2"></i>
                 </div>
-                <div class="col-xl-2">
+                <div class="col-xl-2 text-center">
                     Enviános un mensaje sin compromiso sobre tus dudas o comentarios.
-                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Enviar mensaje</button>
+                    <div class=" my-xl-2 my-sm-0 d-flex justify-content-center ">
+                        <button class="btn btn-outline-light" type="submit"><strong>Enviar mensaje</strong></button>
+                    </div>
                 </div>
             </div>
             <span class="text-muted">Place sticky footer content here.</span>
@@ -118,5 +104,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    @yield('scripts')
 </body>
 </html>
